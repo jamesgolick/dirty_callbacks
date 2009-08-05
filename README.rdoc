@@ -1,6 +1,36 @@
-= dirty_callbacks
+= Dirty Callbacks
 
-Description goes here.
+Dirty callbacks is an active record plugin that adds some callbacks for tracking changes to fields.
+
+Currently, it adds two types of callbacks:
+  
+  before_field_changes_on_update & after_field_changed_on_update
+
+This allows you to hook a callback in to the save cycle that only gets called if a particular field is changed in the save.
+
+This is especially useful in conjunction with my {observational}[http://github.com/giraffesoft/observational] plugin.
+
+== Installation
+
+sudo gem install giraffesoft-dirty_callbacks
+
+== Usage
+
+To get dirty callbacks, you need to include the module in the model you want to use it in.
+
+Then, just declare the callbacks as normal:
+
+class User < ActiveRecord::BAse
+  include DirtyCallbacks
+
+  before_email_changes_on_update :do_stuff
+
+  protected
+  def do_stuff
+    puts email_was
+    puts email
+  end
+end
 
 == Copyright
 
