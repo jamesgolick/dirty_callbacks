@@ -20,17 +20,17 @@ To get dirty callbacks, you need to include the module in the model you want to 
 
 Then, just declare the callbacks as normal:
 
-class User < ActiveRecord::BAse
-  include DirtyCallbacks
+  class User < ActiveRecord::BAse
+    include DirtyCallbacks
 
-  before_email_changes_on_update :do_stuff
+    before_email_changes_on_update :do_stuff
 
-  protected
-  def do_stuff
-    puts email_was
-    puts email
+    protected
+    def do_stuff
+      puts email_was
+      puts email
+    end
   end
-end
 
 == Copyright
 
