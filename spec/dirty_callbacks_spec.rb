@@ -4,7 +4,7 @@ describe "DirtyCallbacks" do
   describe "callback before a changed field is saved - on update" do
     before do
       @user = User.create
-      User.send :before_email_changed_on_update, :do_stuff
+      User.send :before_email_changes_on_update, :do_stuff
     end
 
     it "should fire in the before_save_on_update callback if the field has chnaged" do
